@@ -5,8 +5,10 @@ public class Cat {
     private int satietyLevel;
     private int healthLevel;
     private transient int averageLevel;
+    private transient Strategy strategy;
+
     private void calculateAverageLevel() {
-        averageLevel = (age + satietyLevel + healthLevel + moodLevel)/4;
+        averageLevel = (age + satietyLevel + healthLevel + moodLevel) / 4;
     }
 
     public Cat(String name, int age, int satietyLevel, int healthLevel, int moodLevel) {
@@ -48,17 +50,26 @@ public class Cat {
     }
 
     public void setMoodLevel(int moodLevel) {
-        this.moodLevel = Math.max(moodLevel, 0);;
+        this.moodLevel = Math.max(moodLevel, 0);
+        ;
         calculateAverageLevel();
     }
 
     public void setSatietyLevel(int satietyLevel) {
-        this.satietyLevel = Math.max(satietyLevel, 0);;
+        this.satietyLevel = Math.max(satietyLevel, 0);
+        ;
         calculateAverageLevel();
     }
 
     public void setHealthLevel(int healthLevel) {
         this.healthLevel = Math.max(healthLevel, 0);
         calculateAverageLevel();
+    }
+
+    public void executeStrategy(Strategy strategy) {
+        this.strategy = strategy;
+        if (age <= 5) strategy.makeAction(this, 7, 3);
+        else if (age <= 10) strategy.makeAction(this, 5, 5);
+        else strategy.makeAction(this, 4, 6);
     }
 }
