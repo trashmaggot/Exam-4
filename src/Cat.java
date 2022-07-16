@@ -5,7 +5,9 @@ public class Cat {
     private int satietyLevel;
     private int healthLevel;
     private transient int averageLevel;
-    private transient Strategy strategy;
+    private boolean hasPlayed;
+    private boolean hasFeed;
+    private boolean hasVet;
 
     private void calculateAverageLevel() {
         averageLevel = (age + satietyLevel + healthLevel + moodLevel) / 4;
@@ -44,32 +46,50 @@ public class Cat {
         return moodLevel;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-        calculateAverageLevel();
-    }
-
     public void setMoodLevel(int moodLevel) {
-        this.moodLevel = Math.max(moodLevel, 0);
+        this.moodLevel = Math.max(Math.min(moodLevel, 100), 0);
         ;
         calculateAverageLevel();
     }
 
     public void setSatietyLevel(int satietyLevel) {
-        this.satietyLevel = Math.max(satietyLevel, 0);
+        this.satietyLevel = Math.max(Math.min(satietyLevel, 100), 0);
         ;
         calculateAverageLevel();
     }
 
     public void setHealthLevel(int healthLevel) {
-        this.healthLevel = Math.max(healthLevel, 0);
+        this.healthLevel = Math.max(Math.min(healthLevel, 100), 0);
         calculateAverageLevel();
     }
 
     public void executeStrategy(Strategy strategy) {
-        this.strategy = strategy;
         if (age <= 5) strategy.makeAction(this, 7, 3);
         else if (age <= 10) strategy.makeAction(this, 5, 5);
         else strategy.makeAction(this, 4, 6);
+    }
+
+    public boolean isHasPlayed() {
+        return hasPlayed;
+    }
+
+    public boolean isHasFeed() {
+        return hasFeed;
+    }
+
+    public boolean isHasVet() {
+        return hasVet;
+    }
+
+    public void setHasPlayed(boolean hasPlayed) {
+        this.hasPlayed = hasPlayed;
+    }
+
+    public void setHasFeed(boolean hasFeed) {
+        this.hasFeed = hasFeed;
+    }
+
+    public void setHasVet(boolean hasVet) {
+        this.hasVet = hasVet;
     }
 }

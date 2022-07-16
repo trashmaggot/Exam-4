@@ -50,6 +50,7 @@ public class Main {
             case 5 -> cats.printTable(Comparator.comparing(Cat::getSatietyLevel).reversed());
             case 6 -> cats.printTable(Comparator.comparing(Cat::getAverageLevel).reversed());
         }
+        System.out.println();
     }
 
     public static void add() {
@@ -66,8 +67,9 @@ public class Main {
         System.out.println("2 поиграть");
         System.out.println("3 к ветеринару");
         System.out.println("4 завести нового питомца");
+        System.out.println("5 пропустить день");
 
-        int n = getNumberInBounds(1, 4);
+        int n = getNumberInBounds(1, 5);
         if (n < 4 && cats.getSize() == 0) {
             System.out.println("Это действие недоступно, так как котов еще нет");
             return;
@@ -87,6 +89,7 @@ public class Main {
                 cat.executeStrategy(new VetStrategy());
             }
             case 4 -> add();
+            case 5 -> cats.nextDay();
         }
     }
 
