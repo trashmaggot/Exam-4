@@ -92,4 +92,8 @@ public class Cat {
     public void setHasVet(boolean hasVet) {
         this.hasVet = hasVet;
     }
+
+    public boolean isDead() {
+        return healthLevel == 0;
+    }
 }

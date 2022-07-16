@@ -96,6 +96,7 @@ public class Main {
     public static void run() {
         print();
         chooseAction();
+        cats.holdFuneral();
         run();
     }
 

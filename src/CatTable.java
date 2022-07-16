@@ -48,4 +48,8 @@ public class CatTable {
             k.setHasPlayed(false);
         });
     }
+
+    public void holdFuneral() {
+        cats.removeIf(Cat::isDead);
+    }
 }
