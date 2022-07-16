@@ -24,9 +24,10 @@ public class CatTable {
         System.out.println();
     }
 
-    public void addCat(String name, int age) {  //TODO
+    public void addCat(String name, int age) {
         Random r = new Random();
-        cats.add(new Cat(name, age, r.nextInt(81) + 20, r.nextInt(81) + 20, r.nextInt(81) + 20));
+        cats.add(new Cat(name, age, r.nextInt(81) + 20,
+                r.nextInt(81) + 20, r.nextInt(81) + 20));
     }
 
     public Cat getCat(int index) {

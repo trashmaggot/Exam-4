@@ -5,9 +5,9 @@ public class Cat {
     private int satietyLevel;
     private int healthLevel;
     private transient int averageLevel;
-    private boolean hasPlayed;
-    private boolean hasFeed;
-    private boolean hasVet;
+    private transient boolean hasPlayed;
+    private transient boolean hasFeed;
+    private transient boolean hasVet;
 
     private void calculateAverageLevel() {
         averageLevel = (age + satietyLevel + healthLevel + moodLevel) / 4;
@@ -48,13 +48,11 @@ public class Cat {
 
     public void setMoodLevel(int moodLevel) {
         this.moodLevel = Math.max(Math.min(moodLevel, 100), 0);
-        ;
         calculateAverageLevel();
     }
 
     public void setSatietyLevel(int satietyLevel) {
         this.satietyLevel = Math.max(Math.min(satietyLevel, 100), 0);
-        ;
         calculateAverageLevel();
     }
 
