@@ -1,6 +1,6 @@
 public class Cat {
     private final String name;
-    private int age;
+    private final int age;
     private int moodLevel;
     private int satietyLevel;
     private int healthLevel;
